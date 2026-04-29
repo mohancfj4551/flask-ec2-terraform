@@ -10,8 +10,8 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
 
   # FIXED
-  user_data_base64             = base64encode(file("../scripts/install.sh"))
-  user_data_replace_on_change  = true
+  user_data_base64            = base64encode(file("../scripts/install.sh"))
+  user_data_replace_on_change = true
 
   tags = merge(
     var.tags,
