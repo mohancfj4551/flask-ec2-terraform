@@ -1,20 +1,14 @@
-# Get all VPCs
-data "aws_vpcs" "all" {}
-
-# Pick first available VPC
 data "aws_vpc" "selected" {
-  id = element(data.aws_vpcs.all.ids, 0)
+  id = "vpc-0239910bddfc49c2f"
 }
 
-# Get subnets
-data "aws_subnets" "default" {
+data "aws_subnets" "selected" {
   filter {
     name   = "vpc-id"
     values = [data.aws_vpc.selected.id]
   }
 }
 
-# Amazon Linux AMI
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
@@ -22,5 +16,10 @@ data "aws_ami" "amazon_linux" {
   filter {
     name   = "name"
     values = ["al2023-ami-*-x86_64"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 }
