@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg" {
-  name        = "flask-sg-1"
+  name        = "flask-sg-2"
   description = "Allow SSH, HTTP, and Flask"
   vpc_id      = data.aws_vpc.selected.id
 
