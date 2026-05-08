@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
-  subnet_id = data.aws_subnets.selected.ids[0]
+  subnet_id = data.aws_subnets.selected.ids[1]
 
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.sg.id]
